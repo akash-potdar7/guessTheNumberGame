@@ -72,6 +72,7 @@ public class GuessServlet extends HttpServlet {
 							// give points to user
 							ServletContext ctx = getServletContext();
 							if (ctx.getAttribute("pointsMap") != null) {
+								@SuppressWarnings("unchecked")
 								Map<String, Integer> points = (Map<String, Integer>) ctx.getAttribute("pointsMap");
 								// check if user already exists in map
 								if (points.get(name) != null) {
@@ -95,9 +96,9 @@ public class GuessServlet extends HttpServlet {
 							session.invalidate();
 						} else {
 							if (guessVal > genVal)
-								pw.write("<html><body><h1>Oops</h1><b>Just miss...pssst:guess lower!</b></body></html>");
+								pw.write("<html><body><h1>Oops</h1><b>Just miss...guess lower!</b></body></html>");
 							else
-								pw.write("<html><body><h1>Oops</h1><b>Just miss...pssst:guess higher!</b></body></html>");
+								pw.write("<html><body><h1>Oops</h1><b>Just miss...guess higher!</b></body></html>");
 
 							// reduce the number of tries and put it back to
 							// session

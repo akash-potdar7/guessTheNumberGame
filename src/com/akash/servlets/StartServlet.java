@@ -33,16 +33,15 @@ public class StartServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("in doGet() of S");
 		String player = request.getParameter("name");
-		System.out.println("name input = "+player);
+		System.out.println(player);
 		PrintWriter pw = response.getWriter();
 		if(player==null || player.trim().equalsIgnoreCase("")) {
 			pw.write("<html><body><h1>Error</h1><b>Name input is invalid!</b></body></html>");
 		}
 		else {
 			int val = (int)(10 * Math.random());
-			System.out.println("generated val = "+val);
+			System.out.println("generated val for " + player + " is: " + val);
 			HttpSession session = request.getSession(true);
 			session.setAttribute("user", player);
 			session.setAttribute("genVal", val);

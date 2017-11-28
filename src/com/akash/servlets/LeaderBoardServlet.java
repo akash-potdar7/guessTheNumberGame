@@ -31,6 +31,7 @@ public class LeaderBoardServlet extends HttpServlet {
 		PrintWriter pw = response.getWriter();
 		ServletContext sc = getServletContext();
 		if(sc.getAttribute("pointsMap")!=null) {
+			@SuppressWarnings("unchecked")
 			Map<String,Integer> pointsMap = (Map<String, Integer>) sc.getAttribute("pointsMap");
 			pw.write("<html><body><h1>Points</h1>"+ pointsMap+ "</body></html>");
 		}
